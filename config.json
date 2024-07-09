@@ -72,6 +72,7 @@
       "args": {
         "name": "exhentai",
         "uri": "https://raw.githubusercontent.com/zxcvbnmip/geoip/master/exhentaiv4.txt"
+        "onlyIPType": "ipv4"
       }
     },
     {
@@ -80,6 +81,7 @@
       "args": {
         "name": "exhentai",
         "uri": "https://raw.githubusercontent.com/zxcvbnmip/geoip/master/exhentaiv6.txt"
+        "onlyIPType": "ipv6"
       }
     },    
     {
