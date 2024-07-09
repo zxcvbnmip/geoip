@@ -71,7 +71,7 @@
       "action": "add",
       "args": {
         "name": "ehentai",
-        "uri": "https://raw.githubusercontent.com/zxcvbnmip/geoip/master/exhentaiv4.txt",
+        "uri": "https://raw.githubusercontent.com/zxcvbnmip/geoip/master/ehentaiv4.txt",
         "onlyIPType": "ipv4"
       }
     },
@@ -80,7 +80,7 @@
       "action": "add",
       "args": {
         "name": "ehentai",
-        "uri": "https://raw.githubusercontent.com/zxcvbnmip/geoip/master/exhentaiv6.txt",
+        "uri": "https://raw.githubusercontent.com/zxcvbnmip/geoip/master/ehentaiv6.txt",
         "onlyIPType": "ipv6"
       }
     },    
