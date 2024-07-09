@@ -70,7 +70,7 @@
       "type": "text",
       "action": "add",
       "args": {
-        "name": "exhentai",
+        "name": "ehentai",
         "uri": "https://raw.githubusercontent.com/zxcvbnmip/geoip/master/exhentaiv4.txt",
         "onlyIPType": "ipv4"
       }
@@ -79,7 +79,7 @@
       "type": "text",
       "action": "add",
       "args": {
-        "name": "exhentai",
+        "name": "ehentai",
         "uri": "https://raw.githubusercontent.com/zxcvbnmip/geoip/master/exhentaiv6.txt",
         "onlyIPType": "ipv6"
       }
@@ -235,7 +235,7 @@
           "netflix",
           "telegram",
           "twitter",
-          "exhetnai",
+          "ehetnai",
           "tor"
         ]
       }
@@ -295,7 +295,7 @@
           "netflix",
           "telegram",
           "twitter",
-          "exhentai",
+          "ehentai",
           "tor"
         ]
       }
@@ -325,7 +325,7 @@
           "netflix",
           "telegram",
           "twitter",
-          "exhentai",
+          "ehentai",
           "tor"
         ]
       }
