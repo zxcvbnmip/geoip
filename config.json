@@ -72,6 +72,22 @@
       "type": "text",
       "action": "add",
       "args": {
+        "name": "exhentai",
+        "uri": "https://raw.githubusercontent.com/zxcvbnmip/geoip/master/exhentaiv4.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "exhentai",
+        "uri": "https://raw.githubusercontent.com/zxcvbnmip/geoip/master/exhentaiv6.txt"
+      }
+    },    
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
         "inputDir": "./data"
       }
     },
@@ -109,7 +125,8 @@
           "google",
           "netflix",
           "telegram",
-          "twitter"
+          "twitter",
+          "exhetnai"
         ]
       }
     },
@@ -136,7 +153,8 @@
           "google",
           "netflix",
           "telegram",
-          "twitter"
+          "twitter",
+          "exhentai"
         ]
       }
     },
@@ -161,7 +179,8 @@
           "google",
           "netflix",
           "telegram",
-          "twitter"
+          "twitter",
+          "exhentai"
         ]
       }
     },
