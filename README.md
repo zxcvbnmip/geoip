@@ -199,6 +199,7 @@ These two concepts are notable: `input` and `output`. The `input` is the data so
 - **cutter**：用于裁剪前置步骤中的数据
 - **v2rayGeoIPDat**：V2Ray GeoIP dat 格式（`geoip.dat`）
 - **maxmindMMDB**：MaxMind mmdb 数据格式（`GeoLite2-Country.mmdb`）
+- **maxmindGeoLite2ASNCSV**：MaxMind GeoLite2 ASN CSV 数据（`GeoLite2-ASN-CSV.zip`）
 - **maxmindGeoLite2CountryCSV**：MaxMind GeoLite2 country CSV 数据（`GeoLite2-Country-CSV.zip`）
 - **singboxSRS**：sing-box SRS 格式（`geoip-cn.srs`）
 - **clashRuleSetClassical**：[classical 类型的 Clash RuleSet](https://github.com/Dreamacro/clash/wiki/premium-core-features#classical)
@@ -209,6 +210,7 @@ These two concepts are notable: `input` and `output`. The `input` is the data so
 
 - **text**：纯文本 CIDR（例如：`1.0.0.0/24`）
 - **stdout**：将纯文本 CIDR 输出到 standard output（例如：`1.0.0.0/24`）
+- **lookup**：从指定的列表中查找指定的 IP 或 CIDR
 - **v2rayGeoIPDat**：V2Ray GeoIP dat 格式（`geoip.dat`，适用于 [V2Ray](https://github.com/v2fly/v2ray-core)、[Xray-core](https://github.com/XTLS/Xray-core) 和 [Trojan-Go](https://github.com/p4gefau1t/trojan-go)）
 - **maxmindMMDB**：MaxMind mmdb 数据格式（`GeoLite2-Country.mmdb`，适用于 [Clash](https://github.com/Dreamacro/clash) 和 [Leaf](https://github.com/eycorsican/leaf)）
 - **singboxSRS**：sing-box SRS 格式（`geoip-cn.srs`，适用于 [sing-box](https://github.com/SagerNet/sing-box)）
@@ -237,6 +239,7 @@ Available Commands:
   convert     Convert geoip data from one format to another by using config file
   help        Help about any command
   list        List all available input and output formats
+  lookup      Lookup specified IP or CIDR in specified lists
   merge       Merge plaintext IP & CIDR from standard input, then print to standard output
 
 Flags:
@@ -251,6 +254,7 @@ All available input formats:
   - clashRuleSet (Convert ipcidr type of Clash RuleSet to other formats)
   - clashRuleSetClassical (Convert classical type of Clash RuleSet to other formats (just processing IP & CIDR lines))
   - cutter (Remove data from previous steps)
+  - maxmindGeoLite2ASNCSV (Convert MaxMind GeoLite2 ASN CSV data to other formats)
   - maxmindGeoLite2CountryCSV (Convert MaxMind GeoLite2 country CSV data to other formats)
   - maxmindMMDB (Convert MaxMind mmdb database to other formats)
   - private (Convert LAN and private network CIDR to other formats)
@@ -264,6 +268,7 @@ All available input formats:
 All available output formats:
   - clashRuleSet (Convert data to ipcidr type of Clash RuleSet)
   - clashRuleSetClassical (Convert data to classical type of Clash RuleSet)
+  - lookup (Lookup specified IP or CIDR from various formats of data)
   - maxmindMMDB (Convert data to MaxMind mmdb database format)
   - singboxSRS (Convert data to sing-box SRS format)
   - stdout (Convert data to plaintext CIDR format and output to standard output)
@@ -308,9 +313,65 @@ $ ./geoip convert -c config.json
 2021/08/29 12:11:45 ✅ [singboxSRS] fastly.txt --> output/srs
 ```
 
+```bash
+# lookup one IP from local file
+$ ./geoip lookup -f text -u ./cn.txt -n cn 1.0.1.1
+cn
+
+
+# lookup one CIDR from local file
+$ ./geoip lookup -f text -u ./cn.txt -n cn 1.0.1.1/24
+cn
+
+
+# lookup IP or CIDR in REPL mode from local file
+$ ./geoip lookup -f text -u ./cn.txt -n cn
+Enter IP or CIDR (type `exit` to quit):
+>> 1.0.1.1
+cn
+>> 1.0.1.1/24
+cn
+
+
+# lookup IP or CIDR in REPL mode from remote file
+$ ./geoip lookup -f text -u https://example.com/cn.txt -n cn
+Enter IP or CIDR (type `exit` to quit):
+>> 1.0.1.1
+cn
+>> 1.0.1.1/24
+cn
+
+
+# lookup IP or CIDR in REPL mode from local directory, got two lists joined with comma
+$ ./geoip lookup -f text -d ./path/to/your/directory/
+Enter IP or CIDR (type `exit` to quit):
+>> 1.0.1.1
+cn,my-custom-list
+>> 1.0.1.1/24
+cn,my-custom-list
+
+
+# lookup IP or CIDR in REPL mode from specified lists in local directory
+$ ./geoip lookup -f text -d ./path/to/your/directory/ -l cn,us,jp
+Enter IP or CIDR (type `exit` to quit):
+>> 1.0.1.1
+cn
+>> 1.0.1.1/24
+cn
+
+
+# lookup IP or CIDR in REPL mode with another format from specified lists in remote file
+$ ./geoip lookup -f v2rayGeoIPDat -u https://example.com/geoip.dat -l cn,us,jp
+Enter IP or CIDR (type `exit` to quit):
+>> 1.0.1.1
+cn
+>> 1.0.1.1/24
+cn
+```
+
 ## License
 
-[CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+[CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/) and [GPL-3.0](https://github.com/Loyalsoldier/geoip/blob/master/LICENSE-GPL)
 
 This product includes GeoLite2 data created by MaxMind, available from [MaxMind](http://www.maxmind.com).
 
