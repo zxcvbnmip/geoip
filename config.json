@@ -81,6 +81,15 @@
       "type": "text",
       "action": "add",
       "args": {
+        "name": "steamcn",
+        "uri": "https://raw.githubusercontent.com/zxcvbnmip/geoip/master/steamcn.txt",
+        "onlyIPType": "ipv4"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
         "name": "ehentai",
         "uri": "https://raw.githubusercontent.com/zxcvbnmip/geoip/master/ehentaiv6.txt",
         "onlyIPType": "ipv6"
